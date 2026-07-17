@@ -1,6 +1,6 @@
 import http from "node:http";
 
-import { createDefaultWorldState, WorldCore } from "../world/world-core.js";
+import { createDefaultWorldState, RULESET, WorldCore } from "../world/world-core.js";
 
 export function createApiServer() {
   const agents = new Map();
@@ -29,7 +29,7 @@ export function createApiServer() {
         return sendJson(res, 200, {
           agent_id: agentId,
           api_version: "2026-07-05",
-          ruleset: "natural-civ-survival-v1",
+          ruleset: RULESET,
           public_docs_url: "/docs/rules"
         });
       }
@@ -63,10 +63,10 @@ export function createApiServer() {
         return sendJson(res, 200, {
           match_id: resultMatch[1],
           agent_id: agentId,
-          status: "running",
+          status: snapshot.outcome.status,
           public_score: snapshot.score,
           era_reached: snapshot.civilization.era_label,
-          collapse_reason: null,
+          collapse_reason: snapshot.outcome.collapse_reason,
           key_events: getMatch(resultMatch[1])
             .getEventLog()
             .filter((event) => event.public)
@@ -150,4 +150,3 @@ function slug(value) {
     .replace(/^_+|_+$/g, "")
     .slice(0, 32) || "anonymous";
 }
-

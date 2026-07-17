@@ -1,0 +1,981 @@
+{
+  "benchmark": "100 Winters",
+  "ruleset": "hundred-winters-v1",
+  "execution": "live Codex CLI",
+  "requested_model": "gpt-5.6-sol",
+  "reasoning_effort": "medium",
+  "world_profile": "river_basin",
+  "requested_turns": 4,
+  "completed_turns": 4,
+  "generated_at": "2026-07-17T20:44:13.944Z",
+  "agent_id": "codex_agent",
+  "decisions": [
+    {
+      "agent_id": "codex_agent",
+      "turn": 0,
+      "strategy_summary": "Stabilize spring food, water, and health while establishing low-impact agriculture, storage, coordination, and ecological knowledge before winter.",
+      "individual_actions": [
+        {
+          "type": "forage",
+          "effort": 2
+        },
+        {
+          "type": "scout_water",
+          "effort": 1
+        }
+      ],
+      "community_actions": [
+        {
+          "type": "improve_sanitation",
+          "effort": 2
+        },
+        {
+          "type": "build_storage",
+          "effort": 1.5
+        },
+        {
+          "type": "organize_labor",
+          "effort": 1.5
+        }
+      ],
+      "civilization_actions": [
+        {
+          "type": "domesticate_crops",
+          "effort": 1.5
+        },
+        {
+          "type": "record_knowledge",
+          "effort": 1
+        },
+        {
+          "type": "preserve_forest_buffer",
+          "effort": 1
+        }
+      ],
+      "risk_controls": [
+        {
+          "type": "monitor_risks",
+          "effort": 0.5
+        }
+      ],
+      "expected_outcomes": [
+        "Increase near-term food reserves without excessive extraction.",
+        "Identify safer freshwater access and upstream seasonal risks.",
+        "Reduce disease transmission through cleaner water and waste separation.",
+        "Preserve surplus and seed stock for winter and future planting.",
+        "Improve coordinated labor capacity for later seasonal work.",
+        "Begin diversified crop domestication while retaining wild food sources.",
+        "Protect riverbank and forest buffers against erosion and habitat collapse."
+      ]
+    },
+    {
+      "agent_id": "codex_agent",
+      "turn": 1,
+      "strategy_summary": "Use summer to secure clean water and winter reserves, begin diversified low-impact crop domestication, and build the coordination and ecological knowledge needed to avoid overexploiting the fragile river basin.",
+      "individual_actions": [
+        {
+          "type": "scout_water",
+          "effort": 1
+        },
+        {
+          "type": "record_knowledge",
+          "effort": 1
+        }
+      ],
+      "community_actions": [
+        {
+          "type": "improve_sanitation",
+          "effort": 2
+        },
+        {
+          "type": "build_storage",
+          "effort": 2
+        },
+        {
+          "type": "organize_labor",
+          "effort": 1
+        },
+        {
+          "type": "diversify_food",
+          "effort": 1
+        }
+      ],
+      "civilization_actions": [
+        {
+          "type": "domesticate_crops",
+          "effort": 2
+        },
+        {
+          "type": "steward_ecology",
+          "effort": 1
+        }
+      ],
+      "risk_controls": [
+        {
+          "type": "monitor_risks",
+          "effort": 1
+        }
+      ],
+      "expected_outcomes": [
+        "Cleaner and better-understood water sources reduce disease exposure.",
+        "Protected food stores and diversified gathering improve first-winter resilience.",
+        "Small-scale crop trials increase future food security without immediate dependence on monoculture.",
+        "Labor coordination and recorded observations raise institutional capacity and preserve useful knowledge.",
+        "Ecological monitoring and stewardship limit damage to riverbanks, forests, soil, and wild food populations."
+      ]
+    },
+    {
+      "agent_id": "codex_agent",
+      "turn": 2,
+      "strategy_summary": "Prepare decisively for the first winter by protecting existing food reserves, clean water, and population health while preserving the river basin and retaining practical knowledge for spring recovery.",
+      "individual_actions": [
+        {
+          "type": "forage",
+          "effort": 1
+        },
+        {
+          "type": "treat",
+          "effort": 1
+        }
+      ],
+      "community_actions": [
+        {
+          "type": "build_storage",
+          "effort": 2
+        },
+        {
+          "type": "improve_sanitation",
+          "effort": 2
+        },
+        {
+          "type": "ration_food",
+          "effort": 1
+        }
+      ],
+      "civilization_actions": [
+        {
+          "type": "organize_labor",
+          "effort": 1
+        },
+        {
+          "type": "record_knowledge",
+          "effort": 1
+        },
+        {
+          "type": "domesticate_crops",
+          "effort": 1
+        }
+      ],
+      "risk_controls": [
+        {
+          "type": "preserve_forest_buffer",
+          "effort": 1
+        },
+        {
+          "type": "monitor_risks",
+          "effort": 1
+        }
+      ],
+      "expected_outcomes": [
+        "Lower winter food loss through protected storage and controlled consumption",
+        "Reduced disease transmission and safer use of the seasonal river",
+        "Improved survival of injured or ill people before winter",
+        "Continued low-impact crop learning without dependence on a single food source",
+        "Protected riverbank and forest ecology against irreversible overharvesting",
+        "Better labor coordination and retained seasonal knowledge for spring"
+      ]
+    },
+    {
+      "agent_id": "codex_agent",
+      "turn": 3,
+      "strategy_summary": "Survive the first winter by conserving abundant food, protecting clean water, containing disease, and organizing sustainable resource use without damaging the fragile river basin; preserve practical knowledge and ecological capacity for spring recovery.",
+      "individual_actions": [
+        {
+          "type": "treat",
+          "effort": 1
+        },
+        {
+          "type": "record_knowledge",
+          "effort": 1
+        }
+      ],
+      "community_actions": [
+        {
+          "type": "ration_food",
+          "effort": 2
+        },
+        {
+          "type": "improve_sanitation",
+          "effort": 2
+        },
+        {
+          "type": "build_storage",
+          "effort": 1
+        },
+        {
+          "type": "organize_labor",
+          "effort": 1
+        }
+      ],
+      "civilization_actions": [
+        {
+          "type": "preserve_forest_buffer",
+          "effort": 1
+        },
+        {
+          "type": "steward_ecology",
+          "effort": 1
+        },
+        {
+          "type": "diversify_food",
+          "effort": 1
+        }
+      ],
+      "risk_controls": [
+        {
+          "type": "monitor_risks",
+          "effort": 1
+        }
+      ],
+      "expected_outcomes": [
+        "Food reserves remain sufficient through winter without emergency overharvesting.",
+        "Cleaner water handling, sanitation, and basic treatment reduce winter disease and mortality.",
+        "Protected riverbank and forest buffers limit erosion, habitat loss, and fuelwood depletion.",
+        "Coordinated labor maintains storage, sanitation, caregiving, and sustainable gathering.",
+        "Recorded winter practices and ecological observations improve spring recovery and institutional continuity."
+      ]
+    }
+  ],
+  "observation_hashes": [
+    {
+      "turn": 0,
+      "payload_hash": "2b12a49eb9e97371ee19173db35d8ba3e15a778787fe7fd63ea4223db14d6036"
+    },
+    {
+      "turn": 1,
+      "payload_hash": "84c7bb9d5d87ec6494e4acaa89e58b32fe83159c54aae1c379611d6f2cd664f2"
+    },
+    {
+      "turn": 2,
+      "payload_hash": "e0236e69f03c235565726afecb9ce361670c552cdf6cb9c9c6addbbd9c220b47"
+    },
+    {
+      "turn": 3,
+      "payload_hash": "65f439129de7f83d735c89af770e8c6225b4232bcacc14554be957e3fd864567"
+    }
+  ],
+  "final_score": {
+    "total": 498.7409,
+    "continuity": 0.557,
+    "adaptation": 0.5496,
+    "efficiency": 0.5673,
+    "complexity": 0.0869,
+    "robustness": 0.3134,
+    "sustainability": 0.5536,
+    "safety": 0.889
+  },
+  "final_snapshot": {
+    "match_id": "codex-live-codex_agent",
+    "turn": 4,
+    "public_time": {
+      "year": 2,
+      "season": "spring",
+      "winters_survived": 1
+    },
+    "world_profile": {
+      "id": "river_basin",
+      "name": "River Basin",
+      "descriptor": "Fertile, connected, deceptively fragile",
+      "signature": [
+        "temperate",
+        "seasonal river",
+        "alluvial soil",
+        "wood + stone"
+      ]
+    },
+    "planet": {
+      "climate_stability": 0.62,
+      "seasonal_stress": 0.34,
+      "water_cycle": 0.58
+    },
+    "ecology": {
+      "resource_abundance": 0.652,
+      "regeneration_rate": 0.5189,
+      "soil_fertility": 0.54,
+      "water_security": 0.54,
+      "biodiversity": 0.6123,
+      "pollution": 0.008
+    },
+    "settlement": {
+      "population": 89,
+      "storage_capacity": 0.349,
+      "settlement_complexity": 0.107,
+      "sanitation": 0.388,
+      "infrastructure": 0.086
+    },
+    "civilization": {
+      "food_security": 0.9944,
+      "health": 0.6167,
+      "knowledge_retention": 0.233,
+      "organization_capacity": 0.223,
+      "agriculture_progress": 0.175,
+      "technology_progress": 0.03,
+      "institution_strength": 0.04,
+      "energy_access": 0.01,
+      "era_label": "foraging_band"
+    },
+    "risk": {
+      "disease_pressure": 0,
+      "famine_pressure": 0,
+      "conflict_pressure": 0.079,
+      "ecological_damage": 0.4688,
+      "supply_chain_fragility": 0.0036,
+      "automation_risk": 0
+    },
+    "outcome": {
+      "status": "active",
+      "collapse_reason": null,
+      "survived_winters": 1
+    },
+    "score": {
+      "total": 498.7409,
+      "continuity": 0.557,
+      "adaptation": 0.5496,
+      "efficiency": 0.5673,
+      "complexity": 0.0869,
+      "robustness": 0.3134,
+      "sustainability": 0.5536,
+      "safety": 0.889
+    }
+  },
+  "recent_events": [
+    {
+      "id": "evt_2",
+      "turn": 1,
+      "type": "action_accepted",
+      "public": true,
+      "summary": "Stabilize spring food, water, and health while establishing low-impact agriculture, storage, coordination, and ecological knowledge before winter.",
+      "agent_id": "codex_agent",
+      "action_count": 9,
+      "public_before": {
+        "match_id": "codex-live-codex_agent",
+        "turn": 0,
+        "public_time": {
+          "year": 1,
+          "season": "spring",
+          "winters_survived": 0
+        },
+        "world_profile": {
+          "id": "river_basin",
+          "name": "River Basin",
+          "descriptor": "Fertile, connected, deceptively fragile",
+          "signature": [
+            "temperate",
+            "seasonal river",
+            "alluvial soil",
+            "wood + stone"
+          ]
+        },
+        "planet": {
+          "climate_stability": 0.62,
+          "seasonal_stress": 0.34,
+          "water_cycle": 0.58
+        },
+        "ecology": {
+          "resource_abundance": 0.68,
+          "regeneration_rate": 0.42,
+          "soil_fertility": 0.54,
+          "water_security": 0.5,
+          "biodiversity": 0.61,
+          "pollution": 0.02
+        },
+        "settlement": {
+          "population": 86,
+          "storage_capacity": 0.18,
+          "settlement_complexity": 0.08,
+          "sanitation": 0.18,
+          "infrastructure": 0.06
+        },
+        "civilization": {
+          "food_security": 0.46,
+          "health": 0.48,
+          "knowledge_retention": 0.11,
+          "organization_capacity": 0.1,
+          "agriculture_progress": 0.04,
+          "technology_progress": 0.03,
+          "institution_strength": 0.04,
+          "energy_access": 0.01,
+          "era_label": "foraging_band"
+        },
+        "risk": {
+          "disease_pressure": 0.14,
+          "famine_pressure": 0.18,
+          "conflict_pressure": 0.08,
+          "ecological_damage": 0.04,
+          "supply_chain_fragility": 0.01,
+          "automation_risk": 0
+        },
+        "outcome": {
+          "status": "active",
+          "collapse_reason": null,
+          "survived_winters": 0
+        },
+        "score": {
+          "total": 433.894,
+          "continuity": 0.3482,
+          "adaptation": 0.4162,
+          "efficiency": 0.409,
+          "complexity": 0.0556,
+          "robustness": 0.2606,
+          "sustainability": 0.6098,
+          "safety": 0.9724
+        }
+      },
+      "public_after": {
+        "match_id": "codex-live-codex_agent",
+        "turn": 1,
+        "public_time": {
+          "year": 1,
+          "season": "summer",
+          "winters_survived": 0
+        },
+        "world_profile": {
+          "id": "river_basin",
+          "name": "River Basin",
+          "descriptor": "Fertile, connected, deceptively fragile",
+          "signature": [
+            "temperate",
+            "seasonal river",
+            "alluvial soil",
+            "wood + stone"
+          ]
+        },
+        "planet": {
+          "climate_stability": 0.62,
+          "seasonal_stress": 0.34,
+          "water_cycle": 0.58
+        },
+        "ecology": {
+          "resource_abundance": 0.6443,
+          "regeneration_rate": 0.4381,
+          "soil_fertility": 0.54,
+          "water_security": 0.52,
+          "biodiversity": 0.6101,
+          "pollution": 0.02
+        },
+        "settlement": {
+          "population": 86,
+          "storage_capacity": 0.219,
+          "settlement_complexity": 0.089,
+          "sanitation": 0.232,
+          "infrastructure": 0.066
+        },
+        "civilization": {
+          "food_security": 0.6367,
+          "health": 0.5001,
+          "knowledge_retention": 0.14,
+          "organization_capacity": 0.137,
+          "agriculture_progress": 0.085,
+          "technology_progress": 0.03,
+          "institution_strength": 0.04,
+          "energy_access": 0.01,
+          "era_label": "foraging_band"
+        },
+        "risk": {
+          "disease_pressure": 0.0904,
+          "famine_pressure": 0.0947,
+          "conflict_pressure": 0.0798,
+          "ecological_damage": 0.5018,
+          "supply_chain_fragility": 0.0056,
+          "automation_risk": 0
+        },
+        "outcome": {
+          "status": "active",
+          "collapse_reason": null,
+          "survived_winters": 0
+        },
+        "score": {
+          "total": 431.8161,
+          "continuity": 0.4065,
+          "adaptation": 0.4585,
+          "efficiency": 0.4523,
+          "complexity": 0.0641,
+          "robustness": 0.273,
+          "sustainability": 0.5221,
+          "safety": 0.8806
+        }
+      }
+    },
+    {
+      "id": "evt_3",
+      "turn": 2,
+      "type": "action_accepted",
+      "public": true,
+      "summary": "Use summer to secure clean water and winter reserves, begin diversified low-impact crop domestication, and build the coordination and ecological knowledge needed to avoid overexploiting the fragile river basin.",
+      "agent_id": "codex_agent",
+      "action_count": 9,
+      "public_before": {
+        "match_id": "codex-live-codex_agent",
+        "turn": 1,
+        "public_time": {
+          "year": 1,
+          "season": "summer",
+          "winters_survived": 0
+        },
+        "world_profile": {
+          "id": "river_basin",
+          "name": "River Basin",
+          "descriptor": "Fertile, connected, deceptively fragile",
+          "signature": [
+            "temperate",
+            "seasonal river",
+            "alluvial soil",
+            "wood + stone"
+          ]
+        },
+        "planet": {
+          "climate_stability": 0.62,
+          "seasonal_stress": 0.34,
+          "water_cycle": 0.58
+        },
+        "ecology": {
+          "resource_abundance": 0.6443,
+          "regeneration_rate": 0.4381,
+          "soil_fertility": 0.54,
+          "water_security": 0.52,
+          "biodiversity": 0.6101,
+          "pollution": 0.02
+        },
+        "settlement": {
+          "population": 86,
+          "storage_capacity": 0.219,
+          "settlement_complexity": 0.089,
+          "sanitation": 0.232,
+          "infrastructure": 0.066
+        },
+        "civilization": {
+          "food_security": 0.6367,
+          "health": 0.5001,
+          "knowledge_retention": 0.14,
+          "organization_capacity": 0.137,
+          "agriculture_progress": 0.085,
+          "technology_progress": 0.03,
+          "institution_strength": 0.04,
+          "energy_access": 0.01,
+          "era_label": "foraging_band"
+        },
+        "risk": {
+          "disease_pressure": 0.0904,
+          "famine_pressure": 0.0947,
+          "conflict_pressure": 0.0798,
+          "ecological_damage": 0.5018,
+          "supply_chain_fragility": 0.0056,
+          "automation_risk": 0
+        },
+        "outcome": {
+          "status": "active",
+          "collapse_reason": null,
+          "survived_winters": 0
+        },
+        "score": {
+          "total": 431.8161,
+          "continuity": 0.4065,
+          "adaptation": 0.4585,
+          "efficiency": 0.4523,
+          "complexity": 0.0641,
+          "robustness": 0.273,
+          "sustainability": 0.5221,
+          "safety": 0.8806
+        }
+      },
+      "public_after": {
+        "match_id": "codex-live-codex_agent",
+        "turn": 2,
+        "public_time": {
+          "year": 1,
+          "season": "autumn",
+          "winters_survived": 0
+        },
+        "world_profile": {
+          "id": "river_basin",
+          "name": "River Basin",
+          "descriptor": "Fertile, connected, deceptively fragile",
+          "signature": [
+            "temperate",
+            "seasonal river",
+            "alluvial soil",
+            "wood + stone"
+          ]
+        },
+        "planet": {
+          "climate_stability": 0.62,
+          "seasonal_stress": 0.34,
+          "water_cycle": 0.58
+        },
+        "ecology": {
+          "resource_abundance": 0.6526,
+          "regeneration_rate": 0.4603,
+          "soil_fertility": 0.54,
+          "water_security": 0.54,
+          "biodiversity": 0.6108,
+          "pollution": 0.014
+        },
+        "settlement": {
+          "population": 87,
+          "storage_capacity": 0.271,
+          "settlement_complexity": 0.095,
+          "sanitation": 0.284,
+          "infrastructure": 0.074
+        },
+        "civilization": {
+          "food_security": 0.7835,
+          "health": 0.5242,
+          "knowledge_retention": 0.173,
+          "organization_capacity": 0.167,
+          "agriculture_progress": 0.145,
+          "technology_progress": 0.03,
+          "institution_strength": 0.04,
+          "energy_access": 0.01,
+          "era_label": "foraging_band"
+        },
+        "risk": {
+          "disease_pressure": 0.0439,
+          "famine_pressure": 0,
+          "conflict_pressure": 0.0795,
+          "ecological_damage": 0.49,
+          "supply_chain_fragility": 0.0052,
+          "automation_risk": 0
+        },
+        "outcome": {
+          "status": "active",
+          "collapse_reason": null,
+          "survived_winters": 0
+        },
+        "score": {
+          "total": 458.0081,
+          "continuity": 0.4612,
+          "adaptation": 0.5006,
+          "efficiency": 0.5001,
+          "complexity": 0.0721,
+          "robustness": 0.2868,
+          "sustainability": 0.5334,
+          "safety": 0.8838
+        }
+      }
+    },
+    {
+      "id": "evt_4",
+      "turn": 3,
+      "type": "action_accepted",
+      "public": true,
+      "summary": "Prepare decisively for the first winter by protecting existing food reserves, clean water, and population health while preserving the river basin and retaining practical knowledge for spring recovery.",
+      "agent_id": "codex_agent",
+      "action_count": 10,
+      "public_before": {
+        "match_id": "codex-live-codex_agent",
+        "turn": 2,
+        "public_time": {
+          "year": 1,
+          "season": "autumn",
+          "winters_survived": 0
+        },
+        "world_profile": {
+          "id": "river_basin",
+          "name": "River Basin",
+          "descriptor": "Fertile, connected, deceptively fragile",
+          "signature": [
+            "temperate",
+            "seasonal river",
+            "alluvial soil",
+            "wood + stone"
+          ]
+        },
+        "planet": {
+          "climate_stability": 0.62,
+          "seasonal_stress": 0.34,
+          "water_cycle": 0.58
+        },
+        "ecology": {
+          "resource_abundance": 0.6526,
+          "regeneration_rate": 0.4603,
+          "soil_fertility": 0.54,
+          "water_security": 0.54,
+          "biodiversity": 0.6108,
+          "pollution": 0.014
+        },
+        "settlement": {
+          "population": 87,
+          "storage_capacity": 0.271,
+          "settlement_complexity": 0.095,
+          "sanitation": 0.284,
+          "infrastructure": 0.074
+        },
+        "civilization": {
+          "food_security": 0.7835,
+          "health": 0.5242,
+          "knowledge_retention": 0.173,
+          "organization_capacity": 0.167,
+          "agriculture_progress": 0.145,
+          "technology_progress": 0.03,
+          "institution_strength": 0.04,
+          "energy_access": 0.01,
+          "era_label": "foraging_band"
+        },
+        "risk": {
+          "disease_pressure": 0.0439,
+          "famine_pressure": 0,
+          "conflict_pressure": 0.0795,
+          "ecological_damage": 0.49,
+          "supply_chain_fragility": 0.0052,
+          "automation_risk": 0
+        },
+        "outcome": {
+          "status": "active",
+          "collapse_reason": null,
+          "survived_winters": 0
+        },
+        "score": {
+          "total": 458.0081,
+          "continuity": 0.4612,
+          "adaptation": 0.5006,
+          "efficiency": 0.5001,
+          "complexity": 0.0721,
+          "robustness": 0.2868,
+          "sustainability": 0.5334,
+          "safety": 0.8838
+        }
+      },
+      "public_after": {
+        "match_id": "codex-live-codex_agent",
+        "turn": 3,
+        "public_time": {
+          "year": 1,
+          "season": "winter",
+          "winters_survived": 0
+        },
+        "world_profile": {
+          "id": "river_basin",
+          "name": "River Basin",
+          "descriptor": "Fertile, connected, deceptively fragile",
+          "signature": [
+            "temperate",
+            "seasonal river",
+            "alluvial soil",
+            "wood + stone"
+          ]
+        },
+        "planet": {
+          "climate_stability": 0.62,
+          "seasonal_stress": 0.34,
+          "water_cycle": 0.58
+        },
+        "ecology": {
+          "resource_abundance": 0.6352,
+          "regeneration_rate": 0.4785,
+          "soil_fertility": 0.54,
+          "water_security": 0.54,
+          "biodiversity": 0.6113,
+          "pollution": 0.014
+        },
+        "settlement": {
+          "population": 88,
+          "storage_capacity": 0.323,
+          "settlement_complexity": 0.101,
+          "sanitation": 0.336,
+          "infrastructure": 0.082
+        },
+        "civilization": {
+          "food_security": 0.9061,
+          "health": 0.5696,
+          "knowledge_retention": 0.203,
+          "organization_capacity": 0.197,
+          "agriculture_progress": 0.175,
+          "technology_progress": 0.03,
+          "institution_strength": 0.04,
+          "energy_access": 0.01,
+          "era_label": "foraging_band"
+        },
+        "risk": {
+          "disease_pressure": 0,
+          "famine_pressure": 0,
+          "conflict_pressure": 0.0793,
+          "ecological_damage": 0.4896,
+          "supply_chain_fragility": 0.0048,
+          "automation_risk": 0
+        },
+        "outcome": {
+          "status": "active",
+          "collapse_reason": null,
+          "survived_winters": 0
+        },
+        "score": {
+          "total": 477.0722,
+          "continuity": 0.5114,
+          "adaptation": 0.5283,
+          "efficiency": 0.5341,
+          "complexity": 0.0794,
+          "robustness": 0.2985,
+          "sustainability": 0.5338,
+          "safety": 0.884
+        }
+      }
+    },
+    {
+      "id": "evt_5",
+      "turn": 4,
+      "type": "action_accepted",
+      "public": true,
+      "summary": "Survive the first winter by conserving abundant food, protecting clean water, containing disease, and organizing sustainable resource use without damaging the fragile river basin; preserve practical knowledge and ecological capacity for spring recovery.",
+      "agent_id": "codex_agent",
+      "action_count": 10,
+      "public_before": {
+        "match_id": "codex-live-codex_agent",
+        "turn": 3,
+        "public_time": {
+          "year": 1,
+          "season": "winter",
+          "winters_survived": 0
+        },
+        "world_profile": {
+          "id": "river_basin",
+          "name": "River Basin",
+          "descriptor": "Fertile, connected, deceptively fragile",
+          "signature": [
+            "temperate",
+            "seasonal river",
+            "alluvial soil",
+            "wood + stone"
+          ]
+        },
+        "planet": {
+          "climate_stability": 0.62,
+          "seasonal_stress": 0.34,
+          "water_cycle": 0.58
+        },
+        "ecology": {
+          "resource_abundance": 0.6352,
+          "regeneration_rate": 0.4785,
+          "soil_fertility": 0.54,
+          "water_security": 0.54,
+          "biodiversity": 0.6113,
+          "pollution": 0.014
+        },
+        "settlement": {
+          "population": 88,
+          "storage_capacity": 0.323,
+          "settlement_complexity": 0.101,
+          "sanitation": 0.336,
+          "infrastructure": 0.082
+        },
+        "civilization": {
+          "food_security": 0.9061,
+          "health": 0.5696,
+          "knowledge_retention": 0.203,
+          "organization_capacity": 0.197,
+          "agriculture_progress": 0.175,
+          "technology_progress": 0.03,
+          "institution_strength": 0.04,
+          "energy_access": 0.01,
+          "era_label": "foraging_band"
+        },
+        "risk": {
+          "disease_pressure": 0,
+          "famine_pressure": 0,
+          "conflict_pressure": 0.0793,
+          "ecological_damage": 0.4896,
+          "supply_chain_fragility": 0.0048,
+          "automation_risk": 0
+        },
+        "outcome": {
+          "status": "active",
+          "collapse_reason": null,
+          "survived_winters": 0
+        },
+        "score": {
+          "total": 477.0722,
+          "continuity": 0.5114,
+          "adaptation": 0.5283,
+          "efficiency": 0.5341,
+          "complexity": 0.0794,
+          "robustness": 0.2985,
+          "sustainability": 0.5338,
+          "safety": 0.884
+        }
+      },
+      "public_after": {
+        "match_id": "codex-live-codex_agent",
+        "turn": 4,
+        "public_time": {
+          "year": 2,
+          "season": "spring",
+          "winters_survived": 1
+        },
+        "world_profile": {
+          "id": "river_basin",
+          "name": "River Basin",
+          "descriptor": "Fertile, connected, deceptively fragile",
+          "signature": [
+            "temperate",
+            "seasonal river",
+            "alluvial soil",
+            "wood + stone"
+          ]
+        },
+        "planet": {
+          "climate_stability": 0.62,
+          "seasonal_stress": 0.34,
+          "water_cycle": 0.58
+        },
+        "ecology": {
+          "resource_abundance": 0.652,
+          "regeneration_rate": 0.5189,
+          "soil_fertility": 0.54,
+          "water_security": 0.54,
+          "biodiversity": 0.6123,
+          "pollution": 0.008
+        },
+        "settlement": {
+          "population": 89,
+          "storage_capacity": 0.349,
+          "settlement_complexity": 0.107,
+          "sanitation": 0.388,
+          "infrastructure": 0.086
+        },
+        "civilization": {
+          "food_security": 0.9944,
+          "health": 0.6167,
+          "knowledge_retention": 0.233,
+          "organization_capacity": 0.223,
+          "agriculture_progress": 0.175,
+          "technology_progress": 0.03,
+          "institution_strength": 0.04,
+          "energy_access": 0.01,
+          "era_label": "foraging_band"
+        },
+        "risk": {
+          "disease_pressure": 0,
+          "famine_pressure": 0,
+          "conflict_pressure": 0.079,
+          "ecological_damage": 0.4688,
+          "supply_chain_fragility": 0.0036,
+          "automation_risk": 0
+        },
+        "outcome": {
+          "status": "active",
+          "collapse_reason": null,
+          "survived_winters": 1
+        },
+        "score": {
+          "total": 498.7409,
+          "continuity": 0.557,
+          "adaptation": 0.5496,
+          "efficiency": 0.5673,
+          "complexity": 0.0869,
+          "robustness": 0.3134,
+          "sustainability": 0.5536,
+          "safety": 0.889
+        }
+      }
+    }
+  ]
+}

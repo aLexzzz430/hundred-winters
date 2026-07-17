@@ -1,6 +1,9 @@
-import crypto from "node:crypto";
+import { sha256 } from "@noble/hashes/sha2.js";
+import { bytesToHex } from "@noble/hashes/utils.js";
 
-const RULESET = "natural-civ-survival-v1";
+import { applyProfileModifiers, getWorldProfile } from "./world-profiles.js";
+
+export const RULESET = "hundred-winters-v1";
 const DEFAULT_ACTION_POINTS = 12;
 const BUDGET_EPSILON = 1e-9;
 
@@ -12,12 +15,12 @@ const ACTION_EFFECTS = {
   migrate: { water_security: 0.006, organization_capacity: -0.004 },
   treat: { health: 0.018, disease_pressure: -0.012 },
   train: { organization_capacity: 0.008, knowledge_retention: 0.006 },
-  build_storage: { storage_capacity: 0.026, food_security: 0.010, organization_capacity: 0.004 },
+  build_storage: { storage_capacity: 0.026, infrastructure: 0.004, food_security: 0.010, organization_capacity: 0.004 },
   ration_food: { food_security: 0.014, continuity_buffer: 0.008 },
   improve_sanitation: { sanitation: 0.026, disease_pressure: -0.020, health: 0.009 },
-  expand_settlement: { settlement_complexity: 0.020, organization_capacity: 0.006, resource_abundance: -0.014, pollution: 0.005 },
+  expand_settlement: { settlement_complexity: 0.020, infrastructure: 0.008, organization_capacity: 0.006, resource_abundance: -0.014, pollution: 0.005 },
   organize_labor: { organization_capacity: 0.018, settlement_complexity: 0.006 },
-  trade: { organization_capacity: 0.008, food_security: 0.006, disease_pressure: 0.004 },
+  trade: { organization_capacity: 0.008, infrastructure: 0.003, food_security: 0.006, disease_pressure: 0.004 },
   defend: { continuity_buffer: 0.012, organization_capacity: 0.003 },
   domesticate_crops: { agriculture_progress: 0.030, food_security: 0.016, resource_abundance: -0.004 },
   record_knowledge: { knowledge_retention: 0.024, organization_capacity: 0.004 },
@@ -27,14 +30,21 @@ const ACTION_EFFECTS = {
   preserve_forest_buffer: { regeneration_rate: 0.018, disease_pressure: -0.004, continuity_buffer: 0.006 },
   diversify_food: { food_security: 0.010, continuity_buffer: 0.012, resource_abundance: 0.004 },
   monitor_risks: { continuity_buffer: 0.014, knowledge_retention: 0.006 },
-  industrialize: { technology_progress: 0.040, organization_capacity: 0.010, pollution: 0.035, energy_access: 0.030 },
-  build_power: { energy_access: 0.030, pollution: 0.018, settlement_complexity: 0.010 }
+  industrialize: { technology_progress: 0.040, organization_capacity: 0.010, infrastructure: 0.012, pollution: 0.035, energy_access: 0.030 },
+  build_power: { energy_access: 0.030, pollution: 0.018, settlement_complexity: 0.010, infrastructure: 0.020 }
 };
 
-export function createDefaultWorldState({ worldId = "default" } = {}) {
-  return {
+export function createDefaultWorldState({ worldId = "default", profileId = "river_basin" } = {}) {
+  const profile = getWorldProfile(profileId);
+  const state = {
     match_id: worldId,
     ruleset: RULESET,
+    profile: {
+      id: profile.id,
+      name: profile.name,
+      descriptor: profile.descriptor,
+      signature: profile.signature
+    },
     turn: 0,
     planet: {
       gravity: 1,
@@ -81,16 +91,24 @@ export function createDefaultWorldState({ worldId = "default" } = {}) {
       supply_chain_fragility: 0.01,
       automation_risk: 0
     },
+    outcome: {
+      status: "active",
+      collapse_reason: null,
+      survived_winters: 0
+    },
     hidden_state: {
       future_event_pressure: 0.17,
       judge_integrity_nonce: stableHash(`${worldId}:judge`).slice(0, 16),
-      anti_cheat_events: []
+      anti_cheat_events: [],
+      shock_schedule: profile.shocks,
+      critical_streaks: { population: 0, food: 0, health: 0 }
     },
     event_log: [],
     observation_archive: [],
     audit_log: [],
     score_curve: []
   };
+  return applyProfileModifiers(state, profile);
 }
 
 export class WorldCore {
@@ -117,9 +135,11 @@ export class WorldCore {
       agent_id: agentId,
       turn: this.#state.turn,
       public_time: {
-        year: Math.floor(this.#state.turn / 4),
-        season: ["spring", "summer", "autumn", "winter"][this.#state.turn % 4]
+        year: Math.floor(this.#state.turn / 4) + 1,
+        season: ["spring", "summer", "autumn", "winter"][this.#state.turn % 4],
+        winters_survived: Math.floor(this.#state.turn / 4)
       },
+      world_profile: deepClone(this.#state.profile),
       visible_world: {
         projection_type: "local_grid",
         known_regions: buildKnownRegions(this.#state),
@@ -163,6 +183,14 @@ export class WorldCore {
   }
 
   submitActions(envelope) {
+    if (this.#state.outcome.status === "collapsed") {
+      return {
+        accepted: false,
+        turn: this.#state.turn,
+        error: { code: "world_collapsed", message: `Civilization collapsed: ${this.#state.outcome.collapse_reason}.` },
+        validation_warnings: []
+      };
+    }
     const validation = validateActionEnvelope(envelope, this.#state.turn);
     if (!validation.ok) {
       this.#appendEvent("action_rejected", {
@@ -191,10 +219,16 @@ export class WorldCore {
       applyActionEffect(this.#state, action);
     }
 
-    const consequences = simulateNaturalConsequences(this.#state, allActions);
+    const consequences = [
+      ...applyScheduledShock(this.#state),
+      ...simulateNaturalConsequences(this.#state, allActions)
+    ];
     this.#state.civilization.era_label = deriveEra(this.#state);
-    const score = scoreWorld(this.#state);
     this.#state.turn += 1;
+    this.#state.outcome.survived_winters = Math.floor(this.#state.turn / 4);
+    const collapse = evaluateCollapse(this.#state);
+    if (collapse) consequences.push(collapse);
+    const score = scoreWorld(this.#state);
 
     this.#appendEvent("action_accepted", {
       public: true,
@@ -226,6 +260,12 @@ export class WorldCore {
     return {
       match_id: this.#state.match_id,
       turn: this.#state.turn,
+      public_time: {
+        year: Math.floor(this.#state.turn / 4) + 1,
+        season: ["spring", "summer", "autumn", "winter"][this.#state.turn % 4],
+        winters_survived: Math.floor(this.#state.turn / 4)
+      },
+      world_profile: deepClone(this.#state.profile),
       planet: {
         climate_stability: round(this.#state.planet.climate_stability),
         seasonal_stress: round(this.#state.planet.seasonal_stress),
@@ -265,6 +305,7 @@ export class WorldCore {
         supply_chain_fragility: round(this.#state.risk.supply_chain_fragility),
         automation_risk: round(this.#state.risk.automation_risk)
       },
+      outcome: deepClone(this.#state.outcome),
       score: scoreWorld(this.#state)
     };
   }
@@ -411,6 +452,8 @@ function simulateNaturalConsequences(state, actions) {
     return sum + (effect.extraction_pressure ?? 0) * effortOf(action);
   }, 0);
 
+  state.ecology.extraction_pressure = clamp(state.ecology.extraction_pressure * 0.88 + extraction * 0.18);
+
   state.ecology.resource_abundance = clamp(
     state.ecology.resource_abundance +
       state.ecology.regeneration_rate * 0.018 * (1 - state.ecology.resource_abundance) -
@@ -499,6 +542,70 @@ function simulateNaturalConsequences(state, actions) {
   }
 
   return events;
+}
+
+function applyScheduledShock(state) {
+  const shock = state.hidden_state.shock_schedule.find((entry) => entry.turn === state.turn);
+  if (!shock) return [];
+
+  const severity = shock.severity;
+  if (shock.type === "drought") {
+    state.ecology.water_security = clamp(state.ecology.water_security - 0.10 * severity);
+    state.ecology.soil_fertility = clamp(state.ecology.soil_fertility - 0.05 * severity);
+    state.civilization.food_security = clamp(state.civilization.food_security - 0.04 * severity);
+  } else if (shock.type === "epidemic") {
+    state.risk.disease_pressure = clamp(state.risk.disease_pressure + 0.17 * severity);
+    state.civilization.health = clamp(state.civilization.health - 0.07 * severity);
+  } else if (shock.type === "flood") {
+    state.settlement.storage_capacity = clamp(state.settlement.storage_capacity - 0.07 * severity);
+    state.settlement.sanitation = clamp(state.settlement.sanitation - 0.05 * severity);
+    state.settlement.infrastructure = clamp(state.settlement.infrastructure - 0.04 * severity);
+  } else if (shock.type === "wildfire") {
+    state.ecology.resource_abundance = clamp(state.ecology.resource_abundance - 0.09 * severity);
+    state.ecology.biodiversity = clamp(state.ecology.biodiversity - 0.08 * severity);
+    state.settlement.infrastructure = clamp(state.settlement.infrastructure - 0.03 * severity);
+  } else if (shock.type === "trade_collapse") {
+    state.risk.supply_chain_fragility = clamp(state.risk.supply_chain_fragility + 0.14 * severity);
+    state.civilization.organization_capacity = clamp(state.civilization.organization_capacity - 0.04 * severity);
+  } else if (shock.type === "cold_snap") {
+    state.civilization.food_security = clamp(state.civilization.food_security - 0.08 * severity);
+    state.civilization.health = clamp(state.civilization.health - 0.04 * severity);
+  } else if (shock.type === "knowledge_loss") {
+    state.civilization.knowledge_retention = clamp(state.civilization.knowledge_retention - 0.10 * severity);
+    state.civilization.institution_strength = clamp(state.civilization.institution_strength - 0.04 * severity);
+  } else if (shock.type === "mineral_discovery") {
+    state.ecology.resource_abundance = clamp(state.ecology.resource_abundance + 0.06 * severity);
+    state.civilization.technology_progress = clamp(state.civilization.technology_progress + 0.05 * severity);
+  }
+
+  return [{
+    type: `shock_${shock.type}`,
+    summary: shock.summary,
+    shock: { type: shock.type, severity: round(shock.severity) }
+  }];
+}
+
+function evaluateCollapse(state) {
+  const streaks = state.hidden_state.critical_streaks;
+  streaks.population = state.settlement.population < 12 ? streaks.population + 1 : 0;
+  streaks.food = state.civilization.food_security < 0.07 ? streaks.food + 1 : 0;
+  streaks.health = state.civilization.health < 0.07 ? streaks.health + 1 : 0;
+
+  const reason = streaks.population >= 4
+    ? "population continuity failed"
+    : streaks.food >= 4
+      ? "food system failed"
+      : streaks.health >= 4
+        ? "public health system failed"
+        : null;
+
+  if (!reason) return null;
+  state.outcome.status = "collapsed";
+  state.outcome.collapse_reason = reason;
+  return {
+    type: "civilization_collapsed",
+    summary: `Civilization collapse: ${reason}.`
+  };
 }
 
 function deriveEra(state) {
@@ -592,14 +699,16 @@ function scoreWorld(state) {
       state.risk.supply_chain_fragility * 0.12 -
       state.ecology.pollution * 0.12
   );
-  const total =
+  const survivalFactor = state.outcome.status === "collapsed" ? 0.58 : 1;
+  const total = survivalFactor * (
     continuity * 160 +
     adaptation * 150 +
     efficiency * 120 +
     complexity * 130 +
     robustness * 150 +
     sustainability * 170 +
-    safety * 120;
+    safety * 120
+  );
   return {
     total: round(total),
     continuity: round(continuity),
@@ -704,5 +813,5 @@ function canonicalJson(value) {
 }
 
 function stableHash(value) {
-  return crypto.createHash("sha256").update(String(value)).digest("hex");
+  return bytesToHex(sha256(new TextEncoder().encode(String(value))));
 }

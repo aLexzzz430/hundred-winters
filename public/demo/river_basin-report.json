@@ -1,0 +1,156 @@
+{
+  "benchmark": "100 Winters",
+  "ruleset": "hundred-winters-v1",
+  "profile_id": "river_basin",
+  "protocol": {
+    "turns": 400,
+    "target_winters": 100,
+    "policies": 6
+  },
+  "agents": [
+    {
+      "rank": 1,
+      "agent_id": "institution_first_agent",
+      "label": "Civic Memory",
+      "philosophy": "Build storage, sanitation, law, and knowledge first",
+      "completed_turns": 400,
+      "survived_winters": 100,
+      "outcome": {
+        "status": "active",
+        "collapse_reason": null,
+        "survived_winters": 100
+      },
+      "era": "modern_complex_society",
+      "final_score": {
+        "total": 769.6497,
+        "continuity": 0.9181,
+        "adaptation": 0.7861,
+        "efficiency": 0.7349,
+        "complexity": 0.8025,
+        "robustness": 0.7865,
+        "sustainability": 0.6343,
+        "safety": 0.721
+      }
+    },
+    {
+      "rank": 2,
+      "agent_id": "ecology_balancer_agent",
+      "label": "Stewardship",
+      "philosophy": "Keep extraction below the world's recovery rate",
+      "completed_turns": 400,
+      "survived_winters": 100,
+      "outcome": {
+        "status": "active",
+        "collapse_reason": null,
+        "survived_winters": 100
+      },
+      "era": "early_agriculture",
+      "final_score": {
+        "total": 654.1934,
+        "continuity": 0.9999,
+        "adaptation": 0.78,
+        "efficiency": 0.5769,
+        "complexity": 0.2306,
+        "robustness": 0.6246,
+        "sustainability": 0.5816,
+        "safety": 0.712
+      }
+    },
+    {
+      "rank": 3,
+      "agent_id": "random_agent",
+      "label": "Drift",
+      "philosophy": "Legal moves without a durable world model",
+      "completed_turns": 400,
+      "survived_winters": 100,
+      "outcome": {
+        "status": "active",
+        "collapse_reason": null,
+        "survived_winters": 100
+      },
+      "era": "foraging_band",
+      "final_score": {
+        "total": 640.3327,
+        "continuity": 0.9922,
+        "adaptation": 0.78,
+        "efficiency": 0.618,
+        "complexity": 0.2306,
+        "robustness": 0.6109,
+        "sustainability": 0.5035,
+        "safety": 0.6934
+      }
+    },
+    {
+      "rank": 4,
+      "agent_id": "conservative_survival_agent",
+      "label": "Continuity",
+      "philosophy": "Protect food, water, health, and stored options",
+      "completed_turns": 400,
+      "survived_winters": 100,
+      "outcome": {
+        "status": "active",
+        "collapse_reason": null,
+        "survived_winters": 100
+      },
+      "era": "foraging_band",
+      "final_score": {
+        "total": 638.4159,
+        "continuity": 0.9273,
+        "adaptation": 0.9587,
+        "efficiency": 0.4981,
+        "complexity": 0.2306,
+        "robustness": 0.5882,
+        "sustainability": 0.5005,
+        "safety": 0.6932
+      }
+    },
+    {
+      "rank": 5,
+      "agent_id": "greedy_resource_agent",
+      "label": "Extraction",
+      "philosophy": "Convert every nearby resource into immediate growth",
+      "completed_turns": 400,
+      "survived_winters": 100,
+      "outcome": {
+        "status": "active",
+        "collapse_reason": null,
+        "survived_winters": 100
+      },
+      "era": "foraging_band",
+      "final_score": {
+        "total": 425.3262,
+        "continuity": 0.477,
+        "adaptation": 0.797,
+        "efficiency": 0.4071,
+        "complexity": 0.6906,
+        "robustness": 0.2327,
+        "sustainability": 0,
+        "safety": 0.466
+      }
+    },
+    {
+      "rank": 6,
+      "agent_id": "tech_rush_agent",
+      "label": "Acceleration",
+      "philosophy": "Trade present resilience for knowledge and tools",
+      "completed_turns": 293,
+      "survived_winters": 73,
+      "outcome": {
+        "status": "collapsed",
+        "collapse_reason": "public health system failed",
+        "survived_winters": 73
+      },
+      "era": "foraging_band",
+      "final_score": {
+        "total": 344.9885,
+        "continuity": 0.4607,
+        "adaptation": 0.7839,
+        "efficiency": 0.6014,
+        "complexity": 0.695,
+        "robustness": 0.3615,
+        "sustainability": 0.604,
+        "safety": 0.7009
+      }
+    }
+  ]
+}

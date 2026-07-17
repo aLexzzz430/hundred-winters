@@ -51,7 +51,9 @@ test("match artifact export contains required public and internal files with hid
     "public_replay.json",
     "scores.csv"
   ]);
-  assert.equal(JSON.parse(artifacts["match.json"]).match_id, "export-world");
+  const match = JSON.parse(artifacts["match.json"]);
+  assert.equal(match.match_id, "export-world");
+  assert.equal(match.ruleset, "hundred-winters-v1");
   assert.match(artifacts["events.jsonl"], /action_accepted/);
   assert.match(artifacts["observations.jsonl"], /agent_a/);
   assert.match(artifacts["actions.jsonl"], /build durable food/);

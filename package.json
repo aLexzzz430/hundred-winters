@@ -1,14 +1,38 @@
 {
-  "name": "agent-survival-benchmark",
-  "version": "0.1.0",
-  "private": true,
+  "name": "hundred-winters",
+  "version": "1.0.0",
+  "description": "A long-horizon benchmark for agents that must keep a civilization alive through 100 winters.",
+  "homepage": "https://alexzzz430.github.io/hundred-winters/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aLexzzz430/hundred-winters.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aLexzzz430/hundred-winters/issues"
+  },
+  "license": "MIT",
   "type": "module",
   "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
     "test": "node --test",
-    "start": "node src/cli.js",
-    "simulate:codex": "node src/codex-sim.js"
+    "test:baseline": "node src/cli.js 400",
+    "simulate:codex": "node src/codex-sim.js",
+    "generate:demo": "node scripts/generate-demo.mjs"
   },
   "engines": {
-    "node": ">=24"
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@noble/hashes": "^2.2.0",
+    "framer-motion": "^12.42.2",
+    "lucide-react": "^1.25.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.3",
+    "vite": "^8.1.5"
   }
 }

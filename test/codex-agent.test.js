@@ -11,7 +11,7 @@ test("Codex prompt carries public observation and forbids hidden-state probing",
 
   const prompt = buildCodexPrompt(observation);
 
-  assert.match(prompt, /Natural Civilization Survival Benchmark/);
+  assert.match(prompt, /100 Winters/);
   assert.match(prompt, /Return one strict JSON object/);
   assert.match(prompt, /Do not request hidden state/);
   assert.match(prompt, /"turn": 0/);

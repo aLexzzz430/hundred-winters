@@ -4,3 +4,9 @@ coverage/
 tmp/
 dist/
 *.log
+.env
+.env.*
+!.env.example
+artifacts/
+playwright-report/
+test-results/

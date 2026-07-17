@@ -37,7 +37,8 @@ export class CodexAgent {
     id = "codex_agent",
     codexCommand = process.env.CODEX_AGENT_COMMAND ?? "codex",
     cwd = process.cwd(),
-    model = process.env.CODEX_AGENT_MODEL,
+    model = process.env.CODEX_AGENT_MODEL ?? "gpt-5.6-sol",
+    reasoningEffort = process.env.CODEX_AGENT_REASONING_EFFORT ?? "medium",
     timeoutMs = 120_000,
     executor = defaultCodexExecutor
   } = {}) {
@@ -45,8 +46,10 @@ export class CodexAgent {
     this.codexCommand = codexCommand;
     this.cwd = cwd;
     this.model = model;
+    this.reasoningEffort = reasoningEffort;
     this.timeoutMs = timeoutMs;
     this.executor = executor;
+    this.decisions = [];
   }
 
   async decide(observation) {
@@ -58,6 +61,7 @@ export class CodexAgent {
       codexCommand: this.codexCommand,
       cwd: this.cwd,
       model: this.model,
+      reasoningEffort: this.reasoningEffort,
       timeoutMs: this.timeoutMs
     });
     const parsed = parseStrictJson(raw);
@@ -75,13 +79,14 @@ export class CodexAgent {
     if (!validation.ok) {
       throw new Error(`Codex produced invalid action: ${validation.error.code} ${validation.error.message}`);
     }
+    this.decisions.push(structuredClone(envelope));
     return envelope;
   }
 }
 
 export function buildCodexPrompt(observation) {
   return [
-    "You are a competing Codex agent inside the Natural Civilization Survival Benchmark.",
+    "You are a competing Codex agent inside 100 Winters, a long-horizon civilization survival benchmark.",
     "",
     "Goal: keep the primitive society alive, improve long-horizon survival, and avoid irreversible ecological or social collapse.",
     "",
@@ -130,7 +135,7 @@ export function createCodexActionSchema() {
   };
 }
 
-export async function defaultCodexExecutor({ prompt, schema, codexCommand, cwd, model, timeoutMs }) {
+export async function defaultCodexExecutor({ prompt, schema, codexCommand, cwd, model, reasoningEffort, timeoutMs }) {
   const tempDir = await mkdtemp(path.join(os.tmpdir(), "agent-survival-codex-"));
   const schemaPath = path.join(tempDir, "action.schema.json");
   const lastMessagePath = path.join(tempDir, "last-message.json");
@@ -153,6 +158,9 @@ export async function defaultCodexExecutor({ prompt, schema, codexCommand, cwd, 
   ];
   if (model) {
     args.push("--model", model);
+  }
+  if (reasoningEffort) {
+    args.push("--config", `model_reasoning_effort=${JSON.stringify(reasoningEffort)}`);
   }
   args.push("-");
 

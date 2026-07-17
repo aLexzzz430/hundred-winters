@@ -1,3 +1,5 @@
+import { RULESET } from "../world/world-core.js";
+
 export function exportMatchArtifacts(core, { publicOnly = false } = {}) {
   const snapshot = core.getPublicSnapshot();
   const publicReplay = core.createPublicReplay();
@@ -9,7 +11,7 @@ export function exportMatchArtifacts(core, { publicOnly = false } = {}) {
   return {
     "match.json": prettyJson({
       match_id: snapshot.match_id,
-      ruleset: "natural-civ-survival-v1",
+      ruleset: RULESET,
       turn: snapshot.turn,
       era_reached: snapshot.civilization.era_label,
       final_score: snapshot.score,

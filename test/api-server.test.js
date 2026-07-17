@@ -21,7 +21,7 @@ test("HTTP API registers an agent, returns observation, accepts an action, and r
     assert.equal(registerResponse.status, 200);
     const registration = await registerResponse.json();
     assert.ok(registration.agent_id);
-    assert.equal(registration.ruleset, "natural-civ-survival-v1");
+    assert.equal(registration.ruleset, "hundred-winters-v1");
 
     const observationResponse = await fetch(`${baseUrl}/matches/default/observation?agent_id=${registration.agent_id}`);
     assert.equal(observationResponse.status, 200);
