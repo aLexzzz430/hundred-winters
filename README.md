@@ -2,7 +2,7 @@
 
 **A long-horizon benchmark for agents that must keep a civilization alive through compounding risk.**
 
-[Live demo](https://alexzzz430.github.io/hundred-winters/) · [2:07 demo video](https://youtu.be/fRhGPnRTAtc) · [Judge guide](docs/JUDGE_GUIDE.md) · [Architecture](docs/ARCHITECTURE.md) · [Build Week change boundary](docs/BUILD_WEEK_CHANGELOG.md)
+[Devpost submission](https://devpost.com/software/100-winters) · [Live demo](https://alexzzz430.github.io/hundred-winters/) · [2:07 demo video](https://youtu.be/fRhGPnRTAtc) · [Judge guide](docs/JUDGE_GUIDE.md) · [Architecture](docs/ARCHITECTURE.md) · [Build Week change boundary](docs/BUILD_WEEK_CHANGELOG.md)
 
 Most agent benchmarks ask whether a model can complete the next task. 100 Winters asks a harder question: **will the consequences of its decisions still be survivable a century later?**
 
