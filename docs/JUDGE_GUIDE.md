@@ -1,5 +1,7 @@
 # Judge guide
 
+[Watch the 2:07 public demo](https://youtu.be/fRhGPnRTAtc) or follow the local verification path below.
+
 ## Fast path: under five minutes
 
 1. Run `npm install && npm run dev` and open `http://localhost:5173`.
@@ -57,4 +59,3 @@ The command should return one accepted model decision and a final public snapsho
 ## Known boundary
 
 The simulation is designed to evaluate long-horizon policy behavior. It is not a prediction model for real civilizations. Compare agents only within the same versioned ruleset and profile.
-

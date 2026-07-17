@@ -64,5 +64,5 @@ Codex, GPT-5.6 Sol, JavaScript, Node.js, React, Vite, Framer Motion, Lucide, SHA
 
 - Live demo: https://alexzzz430.github.io/hundred-winters/
 - Public repository: https://github.com/aLexzzz430/hundred-winters
-- Public video under three minutes: `ADD_AFTER_UPLOAD`
+- Public video under three minutes: https://youtu.be/fRhGPnRTAtc
 - Codex Session ID from `/feedback`: `ADD_IN_DEVPOST_FORM`
