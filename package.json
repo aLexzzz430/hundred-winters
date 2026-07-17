@@ -1,0 +1,14 @@
+{
+  "name": "agent-survival-benchmark",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "start": "node src/cli.js",
+    "simulate:codex": "node src/codex-sim.js"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}
